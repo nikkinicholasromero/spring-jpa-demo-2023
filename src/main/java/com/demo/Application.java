@@ -22,7 +22,8 @@ public class Application {
 
     @PostConstruct
     private void postConstruct() {
-        DemoTable demoTable = new DemoTable(UUID.randomUUID());
+        DemoTable demoTable = new DemoTable(UUID.randomUUID(), "Nikki Nicholas", "abc@gas", "12-123456-1");
+        System.out.println(demoTable);
         demoTableRepository.save(demoTable);
     }
 }

@@ -24,6 +24,8 @@ public abstract class BaseEntity<ID> implements Persistable<ID> {
         this.persisted = true;
     }
 
+    public abstract ID id();
+
     @Override
     public ID getId() {
         return id();
@@ -35,13 +37,15 @@ public abstract class BaseEntity<ID> implements Persistable<ID> {
 
         if (o == null || getClass() != o.getClass()) return false;
 
-        return new EqualsBuilder().append(id(), ((BaseEntity<?>) o).id()).isEquals();
+        return new EqualsBuilder()
+                .append(id(), ((BaseEntity<?>) o).id())
+                .isEquals();
     }
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(17, 37).append(id()).toHashCode();
+        return new HashCodeBuilder(17, 37)
+                .append(id())
+                .toHashCode();
     }
-
-    public abstract ID id();
 }
