@@ -21,6 +21,12 @@
     </properties>
 
     <dependencies>
+        <!-- spring -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
         <!-- database -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
