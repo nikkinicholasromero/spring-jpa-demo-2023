@@ -1,11 +1,9 @@
 package com.demo.domain;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
 import lombok.ToString;
-import org.apache.commons.lang3.StringUtils;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -14,27 +12,17 @@ import java.util.UUID;
 @ToString
 public class DemoTable extends BaseEntity<UUID> {
     @Id
-    @Column
     private UUID id;
 
-    @Column
-    @Size(max = STRING_MAXLENGTH)
     private String firstName;
 
-    @Column
-    @Size(max = STRING_MAXLENGTH)
     private String middleName;
 
-    @Column
-    @Size(max = STRING_MAXLENGTH)
     private String lastName;
 
-    @Column
     @Email
-    @Size(max = STRING_MAXLENGTH)
     private String email;
 
-    @Column
     @Pattern(regexp = "\\d{2}-\\d{6}-\\d")
     private String sssId;
 
@@ -44,10 +32,10 @@ public class DemoTable extends BaseEntity<UUID> {
 
     public DemoTable(UUID id, String firstName, String lastName, String email, String sssId) {
         this.id = Objects.requireNonNull(id);
-        this.firstName = StringUtils.truncate(Objects.requireNonNull(StringUtils.trimToNull(firstName)), STRING_MAXLENGTH);
-        this.lastName = StringUtils.truncate(Objects.requireNonNull(StringUtils.trimToNull(lastName)), STRING_MAXLENGTH);
-        this.email = StringUtils.truncate(Objects.requireNonNull(StringUtils.trimToNull(email)), STRING_MAXLENGTH);
-        this.sssId = StringUtils.truncate(Objects.requireNonNull(StringUtils.trimToNull(sssId)), STRING_MAXLENGTH);
+        this.firstName = Objects.requireNonNull(sanitize(firstName));
+        this.lastName = Objects.requireNonNull(sanitize(lastName));
+        this.email = Objects.requireNonNull(sanitize(email));
+        this.sssId = Objects.requireNonNull(sanitize(sssId));
     }
 
     @Override
@@ -56,27 +44,27 @@ public class DemoTable extends BaseEntity<UUID> {
     }
 
     public String firstName() {
-        return StringUtils.trimToEmpty(firstName);
+        return firstName;
     }
 
     public String middleName() {
-        return StringUtils.trimToEmpty(middleName);
+        return middleName;
     }
 
     public String lastName() {
-        return StringUtils.trimToEmpty(lastName);
+        return lastName;
     }
 
     public String email() {
-        return StringUtils.trimToEmpty(email);
+        return email;
     }
 
     public String sssId() {
-        return StringUtils.trimToEmpty(sssId);
+        return sssId;
     }
 
     public DemoTable middleName(String middleName) {
-        this.middleName = StringUtils.truncate(StringUtils.trimToEmpty(middleName), STRING_MAXLENGTH);;
+        this.middleName = sanitize(middleName);
         return this;
     }
 }
