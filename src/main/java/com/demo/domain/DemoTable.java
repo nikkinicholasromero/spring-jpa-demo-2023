@@ -1,4 +1,4 @@
-package com.demo;
+package com.demo.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -23,6 +23,10 @@ public class DemoTable {
 
     public DemoTable(UUID uuid) {
         this.id = uuid.toString();
+    }
+
+    public UUID id() {
+        return UUID.fromString(id);
     }
 
     @Override
