@@ -16,6 +16,7 @@ public class DemoTable extends BaseEntity<UUID> {
     @NotNull
     private UUID id;
 
+    @NotBlank
     @Size(max = 255)
     @Column(length = 255)
     private String firstName;
@@ -24,17 +25,21 @@ public class DemoTable extends BaseEntity<UUID> {
     @Column(length = 255)
     private String middleName;
 
+    @NotBlank
     @Size(max = 255)
     @Column(length = 255)
     private String lastName;
 
+    @NotBlank
     @Email
+    @Size(max = STRING_MAXLENGTH)
     @Column(length = STRING_MAXLENGTH)
     private String email;
 
-    @Size(max = 12)
+    @NotBlank
     @Pattern(regexp = "\\d{2}-\\d{6}-\\d")
-    @Column(length = 255)
+    @Size(max = 12)
+    @Column(length = 12)
     private String sssId;
 
     protected DemoTable() {

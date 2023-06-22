@@ -1,2 +1,46 @@
 - Determine difference of @Size and @Column(length = ?)
 - Determine if excess String length should be truncated silently
+
+------------------------------------ Others ------------------------------------
+@Entity/@Table/@Id
+
+@Column
+- (done) String -> char/varchar/text
+
+- Boolean -> true/false
+- Long -> whole numbers
+- BigDecimal -> decimal numbers
+- LocalDate -> date
+- LocalTime -> time
+- LocalDateTime -> datetime/timestamp
+
+Validations
+- (done) NotEmpty/NotNull
+- (done) Email
+- (done) Pattern
+
+- Digits
+- DecimalMax/DecimalMin/Max/Min/Negative/NegativeOrZero/Positive/PositiveOrZero
+- Future/FutureOrPresent/Past/PastOrPresent
+
+@IdClass
+@GeneratedValue (Do not use this)
+@Transient vs transient
+@Embeddable
+@Embedded
+@EmbeddedId
+
+Joins
+- @JoinColumn
+- @JoinColumns
+- @JoinTable
+- @ManyToMany
+- @ManyToOne
+- @OneToMany
+- @OneToOne
+
+jqpl/hsql/native-query/prepared-statements/ad-hoc-joins
+Entity life cycle
+@Transactional
+save/flush
+

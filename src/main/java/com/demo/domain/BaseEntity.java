@@ -27,16 +27,12 @@ public abstract class BaseEntity<ID> implements Persistable<ID> {
         this.persisted = true;
     }
 
-    public abstract ID id();
-
-    public String sanitize(String value) {
-        return StringUtils.truncate(StringUtils.trimToNull(value), STRING_MAXLENGTH);
-    }
-
     @Override
     public ID getId() {
         return id();
     }
+
+    public abstract ID id();
 
     @Override
     public boolean equals(Object o) {
@@ -54,5 +50,9 @@ public abstract class BaseEntity<ID> implements Persistable<ID> {
         return new HashCodeBuilder(17, 37)
                 .append(id())
                 .toHashCode();
+    }
+
+    public String sanitize(String value) {
+        return StringUtils.truncate(StringUtils.trimToNull(value), STRING_MAXLENGTH);
     }
 }
