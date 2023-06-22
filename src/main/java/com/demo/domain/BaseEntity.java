@@ -9,11 +9,9 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.springframework.data.domain.Persistable;
 
-import java.util.Objects;
-
 @MappedSuperclass
 public abstract class BaseEntity<ID> implements Persistable<ID> {
-    private static final int STRING_MAXLENGTH = 8_000;
+    protected static final int STRING_MAXLENGTH = 8_000;
 
     @Transient
     private boolean persisted = false;

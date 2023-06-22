@@ -1,29 +1,40 @@
 package com.demo.domain;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
 import lombok.ToString;
 
-import java.util.Objects;
+import java.util.Optional;
 import java.util.UUID;
 
 @Entity
 @ToString
 public class DemoTable extends BaseEntity<UUID> {
     @Id
+    @NotNull
     private UUID id;
 
+    @Size(max = 255)
+    @Column(length = 255)
     private String firstName;
 
+    @Size(max = 255)
+    @Column(length = 255)
     private String middleName;
 
+    @Size(max = 255)
+    @Column(length = 255)
     private String lastName;
 
     @Email
+    @Column(length = STRING_MAXLENGTH)
     private String email;
 
+    @Size(max = 12)
     @Pattern(regexp = "\\d{2}-\\d{6}-\\d")
+    @Column(length = 255)
     private String sssId;
 
     protected DemoTable() {
@@ -31,11 +42,11 @@ public class DemoTable extends BaseEntity<UUID> {
     }
 
     public DemoTable(UUID id, String firstName, String lastName, String email, String sssId) {
-        this.id = Objects.requireNonNull(id);
-        this.firstName = Objects.requireNonNull(sanitize(firstName));
-        this.lastName = Objects.requireNonNull(sanitize(lastName));
-        this.email = Objects.requireNonNull(sanitize(email));
-        this.sssId = Objects.requireNonNull(sanitize(sssId));
+        this.id = id;
+        this.firstName = sanitize(firstName);
+        this.lastName = sanitize(lastName);
+        this.email = sanitize(email);
+        this.sssId = sanitize(sssId);
     }
 
     @Override
@@ -47,8 +58,8 @@ public class DemoTable extends BaseEntity<UUID> {
         return firstName;
     }
 
-    public String middleName() {
-        return middleName;
+    public Optional<String> middleName() {
+        return Optional.of(middleName);
     }
 
     public String lastName() {
