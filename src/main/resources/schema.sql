@@ -1,6 +1,8 @@
 create table demo_table (
   id varchar(36) primary key not null,
   first_name varchar(max) not null,
+  middle_name varchar(max),
+  last_name varchar(max) not null,
   email varchar(max) not null,
   sss_id varchar(max) not null
 --   last_name varchar(255) not null,

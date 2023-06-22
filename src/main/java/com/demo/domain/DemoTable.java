@@ -15,8 +15,6 @@ import java.util.UUID;
 @ToString
 @Validated
 public class DemoTable extends BaseEntity<UUID> {
-    private static final int STRING_MAXLENGTH = 8_000;
-
     @Id
     @Column
     @NotNull
@@ -28,6 +26,15 @@ public class DemoTable extends BaseEntity<UUID> {
     private String firstName;
 
     @Column
+    @Size(max = STRING_MAXLENGTH)
+    private String middleName;
+
+    @Column
+    @NotBlank
+    @Size(max = STRING_MAXLENGTH)
+    private String lastName;
+
+    @Column
     @NotBlank
     @Email
     @Size(max = STRING_MAXLENGTH)
@@ -35,22 +42,11 @@ public class DemoTable extends BaseEntity<UUID> {
 
     @Column
     @NotBlank
-    @Pattern(regexp = "\\d{2}-\\d{6}-\\d{1}")
+    @Pattern(regexp = "\\d{2}-\\d{6}-\\d")
     private String sssId;
 
     protected DemoTable() {
         // Note : Required by JPA. Do not use.
-    }
-
-    public DemoTable(
-            @NotNull UUID id,
-            @NotNull String firstName,
-            @NotNull String email,
-            @NotNull String sssId) {
-        this.id = Objects.requireNonNull(id);
-        this.firstName = StringUtils.truncate(Objects.requireNonNull(StringUtils.trimToNull(firstName)), STRING_MAXLENGTH);
-        this.email = StringUtils.truncate(Objects.requireNonNull(StringUtils.trimToNull(email)), STRING_MAXLENGTH);
-        this.sssId = StringUtils.truncate(Objects.requireNonNull(StringUtils.trimToNull(sssId)), STRING_MAXLENGTH);
     }
 
     @Override
@@ -62,10 +58,53 @@ public class DemoTable extends BaseEntity<UUID> {
         return StringUtils.trimToEmpty(firstName);
     }
 
+    public String middleName() {
+        return StringUtils.trimToEmpty(middleName);
+    }
+
+    public String lastName() {
+        return StringUtils.trimToEmpty(lastName);
+    }
+
     public String email() {
         return StringUtils.trimToEmpty(email);
     }
+
     public String sssId() {
         return StringUtils.trimToEmpty(sssId);
+    }
+
+    public static class Builder {
+        private final UUID id;
+        private final String firstName;
+        private final String lastName;
+        private final String email;
+        private final String sssId;
+
+        private String middleName;
+
+        public Builder(UUID id, String firstName, String lastName, String email, String sssId) {
+            this.id = Objects.requireNonNull(id);
+            this.firstName = StringUtils.truncate(Objects.requireNonNull(StringUtils.trimToNull(firstName)), STRING_MAXLENGTH);
+            this.lastName = StringUtils.truncate(Objects.requireNonNull(StringUtils.trimToNull(lastName)), STRING_MAXLENGTH);
+            this.email = StringUtils.truncate(Objects.requireNonNull(StringUtils.trimToNull(email)), STRING_MAXLENGTH);
+            this.sssId = StringUtils.truncate(Objects.requireNonNull(StringUtils.trimToNull(sssId)), STRING_MAXLENGTH);
+        }
+
+        public Builder middleName(String middleName) {
+            this.middleName = StringUtils.truncate(StringUtils.trimToNull(middleName), STRING_MAXLENGTH);;
+            return this;
+        }
+
+        public DemoTable build() {
+            DemoTable demoTable = new DemoTable();
+            demoTable.id = id;
+            demoTable.firstName = firstName;
+            demoTable.middleName = middleName;
+            demoTable.lastName = lastName;
+            demoTable.email = email;
+            demoTable.sssId = sssId;
+            return demoTable;
+        }
     }
 }

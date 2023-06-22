@@ -10,6 +10,8 @@ import org.springframework.data.domain.Persistable;
 
 @MappedSuperclass
 public abstract class BaseEntity<ID> implements Persistable<ID> {
+    protected static final int STRING_MAXLENGTH = 8_000;
+
     @Transient
     private boolean persisted = false;
 
