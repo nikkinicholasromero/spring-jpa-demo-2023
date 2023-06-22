@@ -6,22 +6,18 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
 import lombok.ToString;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.validation.annotation.Validated;
 
 import java.util.Objects;
 import java.util.UUID;
 
 @Entity
 @ToString
-@Validated
 public class DemoTable extends BaseEntity<UUID> {
     @Id
     @Column
-    @NotNull
     private UUID id;
 
     @Column
-    @NotBlank
     @Size(max = STRING_MAXLENGTH)
     private String firstName;
 
@@ -30,18 +26,15 @@ public class DemoTable extends BaseEntity<UUID> {
     private String middleName;
 
     @Column
-    @NotBlank
     @Size(max = STRING_MAXLENGTH)
     private String lastName;
 
     @Column
-    @NotBlank
     @Email
     @Size(max = STRING_MAXLENGTH)
     private String email;
 
     @Column
-    @NotBlank
     @Pattern(regexp = "\\d{2}-\\d{6}-\\d")
     private String sssId;
 
@@ -83,7 +76,7 @@ public class DemoTable extends BaseEntity<UUID> {
     }
 
     public DemoTable middleName(String middleName) {
-        this.middleName = StringUtils.truncate(StringUtils.trimToNull(middleName), STRING_MAXLENGTH);;
+        this.middleName = StringUtils.truncate(StringUtils.trimToEmpty(middleName), STRING_MAXLENGTH);;
         return this;
     }
 }
