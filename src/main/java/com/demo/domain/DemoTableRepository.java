@@ -2,5 +2,7 @@ package com.demo.domain;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface DemoTableRepository extends CrudRepository<DemoTable, String> {
+import java.util.UUID;
+
+public interface DemoTableRepository extends CrudRepository<DemoTable, UUID> {
 }
