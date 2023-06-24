@@ -3,7 +3,7 @@
 - (done) String -> char/varchar/text
 - (done) Boolean -> true/false
 - (done) Long -> whole numbers
-- BigDecimal -> decimal numbers
+- (done) BigDecimal -> decimal numbers
 - LocalDate -> date
 - LocalTime -> time
 - LocalDateTime -> datetime/timestamp
@@ -15,8 +15,9 @@ Validations
 - (done) Size
 - (done) Email
 - (done) Pattern
-- (done) Max/Min/Negative/NegativeOrZero/Positive/PositiveOrZero
-- DecimalMax/DecimalMin
+- (done) Negative/NegativeOrZero/Positive/PositiveOrZero
+- (done) Min/Max
+- (done) DecimalMax/DecimalMin
 - Digits
 - Future/FutureOrPresent/Past/PastOrPresent
 
@@ -41,4 +42,3 @@ jqpl/hsql/native-query/prepared-statements/ad-hoc-joins
 Entity life cycle
 @Transactional
 save/flush
-

@@ -6,9 +6,8 @@ create table demo_table (
   email varchar(max) not null,
   sss_id varchar(12) not null,
   is_regular bit not null,
-  number_of_dependents numeric not null
---   height numeric(1000,2) not null,
---   weight numeric(1000,2) not null,
+  number_of_dependents numeric not null,
+  height numeric(1000,2) not null
 --   hired_date date not null,
 --   start_time time not null,
 );
