@@ -22,13 +22,16 @@ public class Application {
 
     @PostConstruct
     private void postConstruct() {
-        DemoTable demoTable1 = new DemoTable(UUID.randomUUID(), "Nikki Nicholas", "Romero", "nikkinicholas.romero@gmail.com", "12-123456-1");
+        DemoTable demoTable1 = new DemoTable(UUID.randomUUID().toString(), "Nikki Nicholas", "Romero", "nikkinicholas.romero@gmail.com", "12-123456-1");
         System.out.println(demoTable1);
         demoTableRepository.save(demoTable1);
 
-        DemoTable demoTable2 = new DemoTable(UUID.randomUUID(), "Leslie Anne", "Romero", "sayin.leslieanne@gmail.com", "11-222222-3")
-                .middleName("Sayin");
+        DemoTable demoTable2 = new DemoTable(UUID.randomUUID().toString(), "Leslie Anne", "Romero", "sayin.leslieanne@gmail.com", "11-222222-3")
+                .middleName("Sayin")
+                .isRegular(true);
         System.out.println(demoTable2);
         demoTableRepository.save(demoTable2);
+
+        demoTableRepository.findAll().forEach(System.out::println);
     }
 }

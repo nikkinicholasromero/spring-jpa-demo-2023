@@ -5,15 +5,12 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
 import lombok.ToString;
 
-import java.util.Optional;
-import java.util.UUID;
-
 @Entity
 @ToString
-public class DemoTable extends BaseEntity<UUID> {
+public class DemoTable extends BaseEntity<String> {
     @Id
     @NotNull
-    private UUID id;
+    private String id;
 
     @NotBlank
     @Size(max = 255)
@@ -36,20 +33,24 @@ public class DemoTable extends BaseEntity<UUID> {
     @Size(max = 12)
     private String sssId;
 
+    @NotNull
+    private Boolean isRegular;
+
     protected DemoTable() {
         // Note : Required by JPA. Do not use.
     }
 
-    public DemoTable(UUID id, String firstName, String lastName, String email, String sssId) {
+    public DemoTable(String id, String firstName, String lastName, String email, String sssId) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.sssId = sssId;
+        this.isRegular = false;
     }
 
     @Override
-    public UUID id() {
+    public String id() {
         return id;
     }
 
@@ -57,8 +58,8 @@ public class DemoTable extends BaseEntity<UUID> {
         return firstName;
     }
 
-    public Optional<String> middleName() {
-        return Optional.of(middleName);
+    public String middleName() {
+        return middleName;
     }
 
     public String lastName() {
@@ -73,8 +74,17 @@ public class DemoTable extends BaseEntity<UUID> {
         return sssId;
     }
 
+    public Boolean isRegular() {
+        return isRegular;
+    }
+
     public DemoTable middleName(String middleName) {
         this.middleName = middleName;
+        return this;
+    }
+
+    public DemoTable isRegular(Boolean isRegular) {
+        this.isRegular = isRegular;
         return this;
     }
 }

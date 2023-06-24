@@ -1,7 +1,7 @@
 ------------------------------------ Others ------------------------------------
 @Column
 - (done) String -> char/varchar/text
-- Boolean -> true/false
+- (done) Boolean -> true/false
 - Long -> whole numbers
 - BigDecimal -> decimal numbers
 - LocalDate -> date
