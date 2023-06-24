@@ -1,5 +1,3 @@
-@Embeddable
-@Embedded
 @EmbeddedId
 
 Joins

@@ -1,5 +1,6 @@
 package com.demo.domain;
 
+import jakarta.persistence.Embedded;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
@@ -9,13 +10,12 @@ import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Entity
-@ToString
 @Getter
 @Accessors(fluent = true)
+@ToString
 public class DemoTable extends BaseEntity<String> {
     @Id
     @NotNull
@@ -59,14 +59,17 @@ public class DemoTable extends BaseEntity<String> {
     @NotNull
     private LocalTime startTime;
 
-    @NotNull
-    private LocalDateTime addDate;
+    @Embedded
+    private Audit audit;
 
     protected DemoTable() {
         // Note : Required by JPA. Do not use.
     }
 
-    public DemoTable(String id, String firstName, String lastName, String email, String sssId, LocalDate hireDate, LocalTime startTime) {
+    public DemoTable(
+            String id, String firstName, String lastName,
+            String email, String sssId,
+            LocalDate hireDate, LocalTime startTime) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -77,7 +80,7 @@ public class DemoTable extends BaseEntity<String> {
         this.height = BigDecimal.ZERO;
         this.hireDate = hireDate;
         this.startTime = startTime;
-        this.addDate = LocalDateTime.now();
+        this.audit = new Audit();
     }
 
     @Override

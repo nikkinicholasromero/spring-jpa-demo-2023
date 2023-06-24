@@ -10,5 +10,7 @@ create table demo_table (
   height numeric(1000,2) not null,
   hire_date date,
   start_time time,
-  add_date timestamp not null
+  create_date timestamp not null,
+  update_date timestamp,
+  delete_date timestamp
 );
