@@ -36,6 +36,9 @@ public class DemoTable extends BaseEntity<String> {
     @NotNull
     private Boolean isRegular;
 
+    @PositiveOrZero
+    private Long numberOfDependents;
+
     protected DemoTable() {
         // Note : Required by JPA. Do not use.
     }
@@ -47,6 +50,7 @@ public class DemoTable extends BaseEntity<String> {
         this.email = email;
         this.sssId = sssId;
         this.isRegular = false;
+        this.numberOfDependents = 0L;
     }
 
     @Override
@@ -78,6 +82,10 @@ public class DemoTable extends BaseEntity<String> {
         return isRegular;
     }
 
+    public Long numberOfDependents() {
+        return numberOfDependents;
+    }
+
     public DemoTable middleName(String middleName) {
         this.middleName = middleName;
         return this;
@@ -85,6 +93,11 @@ public class DemoTable extends BaseEntity<String> {
 
     public DemoTable isRegular(Boolean isRegular) {
         this.isRegular = isRegular;
+        return this;
+    }
+
+    public DemoTable numberOfDependents(Long numberOfDependents) {
+        this.numberOfDependents = numberOfDependents;
         return this;
     }
 }

@@ -2,7 +2,7 @@
 @Column
 - (done) String -> char/varchar/text
 - (done) Boolean -> true/false
-- Long -> whole numbers
+- (done) Long -> whole numbers
 - BigDecimal -> decimal numbers
 - LocalDate -> date
 - LocalTime -> time
@@ -15,8 +15,9 @@ Validations
 - (done) Size
 - (done) Email
 - (done) Pattern
+- (done) Max/Min/Negative/NegativeOrZero/Positive/PositiveOrZero
+- DecimalMax/DecimalMin
 - Digits
-- DecimalMax/DecimalMin/Max/Min/Negative/NegativeOrZero/Positive/PositiveOrZero
 - Future/FutureOrPresent/Past/PastOrPresent
 
 @Id
