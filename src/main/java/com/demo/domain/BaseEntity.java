@@ -4,7 +4,6 @@ import jakarta.persistence.MappedSuperclass;
 import jakarta.persistence.PostLoad;
 import jakarta.persistence.PostPersist;
 import jakarta.persistence.Transient;
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.springframework.data.domain.Persistable;
@@ -50,9 +49,5 @@ public abstract class BaseEntity<ID> implements Persistable<ID> {
         return new HashCodeBuilder(17, 37)
                 .append(id())
                 .toHashCode();
-    }
-
-    public String sanitize(String value) {
-        return StringUtils.truncate(StringUtils.trimToNull(value), STRING_MAXLENGTH);
     }
 }

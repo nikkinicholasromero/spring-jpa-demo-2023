@@ -1,6 +1,5 @@
 package com.demo.domain;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
@@ -18,28 +17,23 @@ public class DemoTable extends BaseEntity<UUID> {
 
     @NotBlank
     @Size(max = 255)
-    @Column(length = 255)
     private String firstName;
 
     @Size(max = 255)
-    @Column(length = 255)
     private String middleName;
 
     @NotBlank
     @Size(max = 255)
-    @Column(length = 255)
     private String lastName;
 
     @NotBlank
     @Email
     @Size(max = STRING_MAXLENGTH)
-    @Column(length = STRING_MAXLENGTH)
     private String email;
 
     @NotBlank
     @Pattern(regexp = "\\d{2}-\\d{6}-\\d")
     @Size(max = 12)
-    @Column(length = 12)
     private String sssId;
 
     protected DemoTable() {
@@ -48,10 +42,10 @@ public class DemoTable extends BaseEntity<UUID> {
 
     public DemoTable(UUID id, String firstName, String lastName, String email, String sssId) {
         this.id = id;
-        this.firstName = sanitize(firstName);
-        this.lastName = sanitize(lastName);
-        this.email = sanitize(email);
-        this.sssId = sanitize(sssId);
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.sssId = sssId;
     }
 
     @Override
@@ -80,7 +74,7 @@ public class DemoTable extends BaseEntity<UUID> {
     }
 
     public DemoTable middleName(String middleName) {
-        this.middleName = sanitize(middleName);
+        this.middleName = middleName;
         return this;
     }
 }

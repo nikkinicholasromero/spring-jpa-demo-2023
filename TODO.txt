@@ -1,6 +1,3 @@
-- Determine difference of @Size and @Column(length = ?)
-- Determine if excess String length should be truncated silently
-
 ------------------------------------ Others ------------------------------------
 @Entity/@Table/@Id
 
