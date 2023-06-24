@@ -1,9 +1,6 @@
 ------------------------------------ Others ------------------------------------
-@Entity/@Table/@Id
-
 @Column
 - (done) String -> char/varchar/text
-
 - Boolean -> true/false
 - Long -> whole numbers
 - BigDecimal -> decimal numbers
@@ -12,14 +9,17 @@
 - LocalDateTime -> datetime/timestamp
 
 Validations
-- (done) NotEmpty/NotNull
+- (done) NotNull
+- (done) NotEmpty
+- (done) NotBlank
+- (done) Size
 - (done) Email
 - (done) Pattern
-
 - Digits
 - DecimalMax/DecimalMin/Max/Min/Negative/NegativeOrZero/Positive/PositiveOrZero
 - Future/FutureOrPresent/Past/PastOrPresent
 
+@Id
 @IdClass
 @GeneratedValue (Do not use this)
 @Transient vs transient
