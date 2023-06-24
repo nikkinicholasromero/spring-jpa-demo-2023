@@ -1,7 +1,3 @@
-@Id
-@IdClass
-@GeneratedValue (Do not use this)
-@Transient vs transient
 @Embeddable
 @Embedded
 @EmbeddedId

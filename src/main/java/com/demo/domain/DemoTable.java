@@ -3,7 +3,9 @@ package com.demo.domain;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
+import lombok.Getter;
 import lombok.ToString;
+import lombok.experimental.Accessors;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -12,6 +14,8 @@ import java.time.LocalTime;
 
 @Entity
 @ToString
+@Getter
+@Accessors(fluent = true)
 public class DemoTable extends BaseEntity<String> {
     @Id
     @NotNull
@@ -79,50 +83,6 @@ public class DemoTable extends BaseEntity<String> {
     @Override
     public String id() {
         return id;
-    }
-
-    public String firstName() {
-        return firstName;
-    }
-
-    public String middleName() {
-        return middleName;
-    }
-
-    public String lastName() {
-        return lastName;
-    }
-
-    public String email() {
-        return email;
-    }
-
-    public String sssId() {
-        return sssId;
-    }
-
-    public Boolean isRegular() {
-        return isRegular;
-    }
-
-    public Long numberOfDependents() {
-        return numberOfDependents;
-    }
-
-    public BigDecimal height() {
-        return height;
-    }
-
-    public LocalDate hireDate() {
-        return hireDate;
-    }
-
-    public LocalTime startTime() {
-        return startTime;
-    }
-
-    public LocalDateTime addDate() {
-        return addDate;
     }
 
     public DemoTable middleName(String middleName) {
