@@ -1,12 +1,14 @@
 package com.demo.domain;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
 import lombok.ToString;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 @Entity
 @ToString
@@ -47,11 +49,20 @@ public class DemoTable extends BaseEntity<String> {
     @PositiveOrZero
     private BigDecimal height;
 
+    @NotNull
+    private LocalDate hireDate;
+
+    @NotNull
+    private LocalTime startTime;
+
+    @NotNull
+    private LocalDateTime addDate;
+
     protected DemoTable() {
         // Note : Required by JPA. Do not use.
     }
 
-    public DemoTable(String id, String firstName, String lastName, String email, String sssId) {
+    public DemoTable(String id, String firstName, String lastName, String email, String sssId, LocalDate hireDate, LocalTime startTime) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -60,6 +71,9 @@ public class DemoTable extends BaseEntity<String> {
         this.isRegular = false;
         this.numberOfDependents = 0L;
         this.height = BigDecimal.ZERO;
+        this.hireDate = hireDate;
+        this.startTime = startTime;
+        this.addDate = LocalDateTime.now();
     }
 
     @Override
@@ -97,6 +111,18 @@ public class DemoTable extends BaseEntity<String> {
 
     public BigDecimal height() {
         return height;
+    }
+
+    public LocalDate hireDate() {
+        return hireDate;
+    }
+
+    public LocalTime startTime() {
+        return startTime;
+    }
+
+    public LocalDateTime addDate() {
+        return addDate;
     }
 
     public DemoTable middleName(String middleName) {

@@ -1,26 +1,3 @@
------------------------------------- Others ------------------------------------
-@Column
-- (done) String -> char/varchar/text
-- (done) Boolean -> true/false
-- (done) Long -> whole numbers
-- (done) BigDecimal -> decimal numbers
-- LocalDate -> date
-- LocalTime -> time
-- LocalDateTime -> datetime/timestamp
-
-Validations
-- (done) NotNull
-- (done) NotEmpty
-- (done) NotBlank
-- (done) Size
-- (done) Email
-- (done) Pattern
-- (done) Negative/NegativeOrZero/Positive/PositiveOrZero
-- (done) Min/Max
-- (done) DecimalMax/DecimalMin
-- Digits
-- Future/FutureOrPresent/Past/PastOrPresent
-
 @Id
 @IdClass
 @GeneratedValue (Do not use this)

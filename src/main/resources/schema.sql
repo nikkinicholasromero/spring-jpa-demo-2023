@@ -7,7 +7,8 @@ create table demo_table (
   sss_id varchar(12) not null,
   is_regular bit not null,
   number_of_dependents numeric not null,
-  height numeric(1000,2) not null
---   hired_date date not null,
---   start_time time not null,
+  height numeric(1000,2) not null,
+  hire_date date,
+  start_time time,
+  add_date timestamp not null
 );
